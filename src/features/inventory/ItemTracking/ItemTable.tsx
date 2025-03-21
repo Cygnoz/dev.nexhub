@@ -70,7 +70,7 @@ const ItemTable = ({}: Props) => {
     }
   };
 
-  const filteredItems = allItemTracking.filter((item: any) => {
+  const filteredItems = allItemTracking?.filter((item: any) => {
     const searchValueLower = searchValue.toLowerCase();
 
     const itemDate = item.date.split(" ")[0];
@@ -129,7 +129,7 @@ const ItemTable = ({}: Props) => {
           <table className="min-w-full bg-white relative pb-4">
             <thead className="text-[12px] text-center text-dropdownText">
               <tr className="bg-lightPink">
-                {itemTrackingHead.map((item, index) => (
+                {itemTrackingHead?.map((item, index) => (
                   <th
                     className="py-2 px-4 font-medium border-b border-tableBorder relative"
                     key={index}
@@ -141,7 +141,7 @@ const ItemTable = ({}: Props) => {
             </thead>
             <tbody className="text-dropdownText text-center text-[13px] relative">
               {/* If loading is true, show skeleton loader */}
-              {loading.skeleton ? (
+              {loading?.skeleton ? (
                 [...Array(filteredItems.lenght>0?filteredItems.lenght:5)].map((_, idx) => (
                   <TableSkelton key={idx} columns={itemTrackingHead} />
                 ))

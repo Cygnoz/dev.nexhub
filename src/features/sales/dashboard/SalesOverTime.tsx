@@ -43,7 +43,7 @@ const SalesOverTime: React.FC<SalesOverTimeProps> = ({ date }) => {
       { name: "25-31", value: 0 },
     ];
 
-    dailySales.forEach(({ date, totalSales }) => {
+    dailySales?.forEach(({ date, totalSales }) => {
       const day = parseInt(date.split("-")[2], 10);
       if (day <= 5) groupedData[0].value += totalSales;
       else if (day <= 10) groupedData[1].value += totalSales;
@@ -61,7 +61,7 @@ const SalesOverTime: React.FC<SalesOverTimeProps> = ({ date }) => {
         `${endponits.MAIN_DASH_SALES_OVER_TIME}?date=${date}`
       );
       if (response && !error) {
-        setSalesData(transformData(response.data.dailySales));
+        setSalesData(transformData(response?.data?.dailySales));
       }
     } catch (error) {
       console.error("Fetch Error:", error);

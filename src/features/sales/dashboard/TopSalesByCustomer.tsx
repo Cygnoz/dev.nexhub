@@ -117,7 +117,7 @@ function TopSalesByCustomer({ date }: Props) {
           <Tooltip content={renderCustomTooltip} cursor={{ fill: 'transparent' }} />
           <Bar shape={<CustomBar />} barSize={30} dataKey="value" fill="#8884d8">
             <LabelList dataKey="value" position="right" fontSize={10} />
-            {topCustomerData.map((_, index) => (
+            {topCustomerData?.map((_, index) => (
               <Cell key={`cell-${index}`} fill={colors[index % colors.length]} />
             ))}
           </Bar>

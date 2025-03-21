@@ -197,12 +197,12 @@ const ExpenseTable = () => {
             </tr>
           </thead>
           <tbody className="text-dropdownText text-center text-[13px]">
-            {loading.skeleton ? (
+            {loading?.skeleton ? (
               [...Array(rowsPerPage)].map((_, idx) => (
                 <TableSkelton key={idx} columns={skeletonColumns} />
               ))
-            ) : paginatedData && paginatedData.length > 0 ? (
-              paginatedData.map((item: any, rowIndex: number) => (
+            ) : paginatedData && paginatedData?.length > 0 ? (
+              paginatedData?.map((item: any, rowIndex: number) => (
                 <tr
                   key={item.id}
                   className="relative cursor-pointer  border-y border-tableBorder"
