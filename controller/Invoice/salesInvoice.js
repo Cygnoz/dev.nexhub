@@ -665,7 +665,7 @@ function validateInvoiceData( data, settings, customerExist, items, itemTable, o
   //validateAlphabetsFields([''], data, errors);
 
   //Tax Details
-  validatePlaceOfSupply(data.placeOfSupply, organizationExists, errors);
+  // validatePlaceOfSupply(data.placeOfSupply, organizationExists, errors);
 
   return errors;
 }
@@ -751,12 +751,12 @@ items.forEach((item) => {
 }
 
 
-// Validate Place Of Supply
-function validatePlaceOfSupply(placeOfSupply, organization, errors) {
-  validateField(
-    placeOfSupply && !validCountries[organization.organizationCountry]?.includes(placeOfSupply),
-    "Invalid Place of Supply: " + placeOfSupply, errors );
-}
+// // Validate Place Of Supply
+// function validatePlaceOfSupply(placeOfSupply, organization, errors) {
+//   validateField(
+//     placeOfSupply && !validCountries[organization.organizationCountry]?.includes(placeOfSupply),
+//     "Invalid Place of Supply: " + placeOfSupply, errors );
+// }
 
 
 //Validate Discount Transaction Type
