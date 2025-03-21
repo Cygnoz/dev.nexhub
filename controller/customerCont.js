@@ -1155,15 +1155,15 @@ function validateBillingAddress(data, errors) {
   validateAddressFields('billing', data, errors);
 }
 
-// Validate shipping address
-function validateShippingAddress(data, errors) {
-  const country = data.shippingCountry, state = data.shippingState;
+// // Validate shipping address
+// function validateShippingAddress(data, errors) {
+//   const country = data.shippingCountry, state = data.shippingState;
 
-  validateField(country && state && !validCountries[country]?.includes(state),
-    `Invalid Shipping Country or State: ${country}, ${state}`, errors);
+//   validateField(country && state && !validCountries[country]?.includes(state),
+//     `Invalid Shipping Country or State: ${country}, ${state}`, errors);
 
-  validateAddressFields('shipping', data, errors);
-}
+//   validateAddressFields('shipping', data, errors);
+// }
 
 // Validate common address fields
 function validateAddressFields(type, data, errors) {
