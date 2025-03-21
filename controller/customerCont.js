@@ -983,7 +983,7 @@ async function updateAccount(cleanedData, accountExist) {
 
     //Tax Details
     validateTaxType(data.taxType, validTaxTypes, errors);
-    // validatePlaceOfSupply(data.placeOfSupply, organization, errors);
+    validatePlaceOfSupply(data.placeOfSupply, organization, errors);
     validateGSTorVAT(data, errors);
 
     //Currency
@@ -1088,10 +1088,10 @@ function validateIntegerFields(fields, data, errors) {
   function validateTaxType(taxType, validTaxTypes, errors) {
     validateField(taxType && !validTaxTypes.includes(taxType),"Invalid Tax Type: " + taxType, errors);
   }
-// // Validate Place Of Supply
-//   function validatePlaceOfSupply(placeOfSupply, organization, errors) {
-//     validateField(placeOfSupply && !validCountries[organization.organizationCountry]?.includes(placeOfSupply),"Invalid Place of Supply: " + placeOfSupply, errors);
-//   }
+// Validate Place Of Supply
+  function validatePlaceOfSupply(placeOfSupply, organization, errors) {
+    validateField(placeOfSupply && !validCountries[organization.organizationCountry]?.includes(placeOfSupply),"Invalid Place of Supply: " + placeOfSupply, errors);
+  }
 
 // Validate GST or VAT details
 function validateGSTorVAT(data, errors) {
@@ -1155,15 +1155,15 @@ function validateBillingAddress(data, errors) {
   validateAddressFields('billing', data, errors);
 }
 
-// // Validate shipping address
-// function validateShippingAddress(data, errors) {
-//   const country = data.shippingCountry, state = data.shippingState;
+// Validate shipping address
+function validateShippingAddress(data, errors) {
+  const country = data.shippingCountry, state = data.shippingState;
 
-//   validateField(country && state && !validCountries[country]?.includes(state),
-//     `Invalid Shipping Country or State: ${country}, ${state}`, errors);
+  validateField(country && state && !validCountries[country]?.includes(state),
+    `Invalid Shipping Country or State: ${country}, ${state}`, errors);
 
-//   validateAddressFields('shipping', data, errors);
-// }
+  validateAddressFields('shipping', data, errors);
+}
 
 // Validate common address fields
 function validateAddressFields(type, data, errors) {
