@@ -48,7 +48,7 @@ server.use((err, req, res, next) => {
 const PORT = 7001;
 
 server.get('/',(req,res)=>{
-    res.status(200).json("Dev NexHub server started")
+    res.status(200).json("Dev NexHub server started  Accounts")
 })
 
 server.listen(PORT,()=>{
