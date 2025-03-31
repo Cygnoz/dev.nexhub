@@ -992,7 +992,7 @@ function validateField(condition, errorMsg, errors) {
 }
 //Valid Req Fields
 function validateReqFields( data, taxType, organization, errors ) {
-  validateField( typeof data.customerDisplayName === 'undefined', `Customer Display Name required`, errors );  
+  // validateField( typeof data.customerDisplayName === 'undefined', `Customer Display Name required`, errors );  
 
   validateField( typeof taxType === 'undefined' || taxType === '' , `Please setup tax`, errors );
   validateField( typeof data.taxType === 'undefined' || data.taxType === '' , `Select tax type`, errors );
