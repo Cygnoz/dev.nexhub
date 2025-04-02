@@ -23,7 +23,7 @@ jobs:
       - name: Deploy to Server
         run: |
           ssh ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_IP }} << 'EOF_SSH'
-            cd ~/BillBizz
+            cd ~/dev.nexhub
             git checkout Organization
             git pull
 
@@ -38,12 +38,12 @@ jobs:
             echo 'COPY package*.json ./' >> Dockerfile
             echo 'RUN npm install' >> Dockerfile
             echo 'COPY . .' >> Dockerfile
-            echo 'EXPOSE 5004' >> Dockerfile
+            echo 'EXPOSE 7004' >> Dockerfile
             echo 'CMD ["node", "server.js"]' >> Dockerfile
 
             # Build and run the container
-            docker build -t devbillorganization .
-            docker run -d --name devbillorganization -p 5004:5004 devbillorganization
+            docker build -t dev-nexhuborganization .
+            docker run -d --name devnexhuborganization -p 8004:7004 devnexhuborganization
 
             # Cleanup Dockerfile
             rm Dockerfile
