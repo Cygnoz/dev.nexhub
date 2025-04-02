@@ -26,8 +26,8 @@ jobs:
             git checkout Purchase
             git pull
             # Remove old container if it exists
-            if docker ps -a --format '{{.Names}}' | grep -q "^dev-nexhub-inventory$"; then
-              docker rm -f dev-nexhub-inventory
+            if docker ps -a --format '{{.Names}}' | grep -q "^dev-nexhub-purchase$"; then
+              docker rm -f dev-nexhub-purchase
             fi
             # Create Dockerfile
             echo 'FROM node:22.11.0' > Dockerfile
@@ -38,8 +38,8 @@ jobs:
             echo 'EXPOSE 7005' >> Dockerfile
             echo 'CMD ["node", "server.js"]' >> Dockerfile
             # Build and run the container
-            docker build -t dev-nexhub-Purchase .
-            docker run -d --name dev-nexhub-Purchase -p 8005:7005 dev-nexhub-Purchase
+            docker build -t dev-nexhub-purchase .
+            docker run -d --name dev-nexhub-purchase -p 8005:7005 dev-nexhub-purchase
             # Cleanup Dockerfile
             rm Dockerfile
           EOF_SSH
