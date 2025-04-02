@@ -1,9 +1,9 @@
-name: Deploy to Ubuntu Server - Accounts
+name: Deploy to Ubuntu Server - Organization nexhub
 
 on:
   push:
     branches:
-      - Accounts
+      -Accounts
 
 jobs:
   deploy:
@@ -23,13 +23,13 @@ jobs:
       - name: Deploy to Server
         run: |
           ssh ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_IP }} << 'EOF_SSH'
-            cd ~/BillBizz
+            cd ~/dev.nexhub
             git checkout Accounts
             git pull
 
             # Remove old container if it exists
-            if docker ps -a --format '{{.Names}}' | grep -q "^devbillaccounts$"; then
-              docker rm -f devbillaccounts
+            if docker ps -a --format '{{.Names}}' | grep -q "^dev-nexhub-Accounts$"; then
+              docker rm -f dev-nexhub-Accounts
             fi
 
             # Create Dockerfile
@@ -38,12 +38,12 @@ jobs:
             echo 'COPY package*.json ./' >> Dockerfile
             echo 'RUN npm install' >> Dockerfile
             echo 'COPY . .' >> Dockerfile
-            echo 'EXPOSE 5001' >> Dockerfile
+            echo 'EXPOSE 7001' >> Dockerfile
             echo 'CMD ["node", "server.js"]' >> Dockerfile
 
             # Build and run the container
-            docker build -t devbillaccounts .
-            docker run -d --name devbillaccounts -p 5001:5001 devbillaccounts
+            docker build -t dev-nexhub-Accounts .
+            docker run -d --name dev-nexhub-Accounts -p 8001:7001 dev-nexhub-Accounts
 
             # Cleanup Dockerfile
             rm Dockerfile
