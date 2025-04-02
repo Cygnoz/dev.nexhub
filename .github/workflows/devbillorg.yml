@@ -1,4 +1,4 @@
-name: Deploy to Ubuntu Server - Organization
+name: Deploy to Ubuntu Server - Organization nexhub
 
 on:
   push:
