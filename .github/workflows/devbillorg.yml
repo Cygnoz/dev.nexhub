@@ -43,7 +43,7 @@ jobs:
 
             # Build and run the container
             docker build -t dev-nexhub-organization .
-            docker run -d --name devnexhub-organization -p 8004:7004 devnexhub-organization
+            docker run -d --name dev-nexhub-organization -p 8004:7004 dev-nexhub-organization
 
             # Cleanup Dockerfile
             rm Dockerfile
