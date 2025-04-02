@@ -1,4 +1,4 @@
-name: Deploy to Ubuntu Server - Report
+name: Deploy to Ubuntu Server - Purchase nexhub
 
 on:
   push:
@@ -19,32 +19,27 @@ jobs:
           echo "${{ secrets.SERVER_SSH_KEY }}" > ~/.ssh/id_rsa
           chmod 600 ~/.ssh/id_rsa
           ssh-keyscan -H ${{ secrets.SERVER_IP }} >> ~/.ssh/known_hosts
-
       - name: Deploy to Server
         run: |
           ssh ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_IP }} << 'EOF_SSH'
-            cd ~/BillBizz
+            cd ~/dev.nexhub
             git checkout Report
             git pull
-
             # Remove old container if it exists
-            if docker ps -a --format '{{.Names}}' | grep -q "^devbillreport$"; then
-              docker rm -f devbillreport
+            if docker ps -a --format '{{.Names}}' | grep -q "^dev-nexhub-report$"; then
+              docker rm -f dev-nexhub-report
             fi
-
             # Create Dockerfile
-            echo 'FROM node:18' > Dockerfile
+            echo 'FROM node:22.11.0' > Dockerfile
             echo 'WORKDIR /usr/src/app' >> Dockerfile
             echo 'COPY package*.json ./' >> Dockerfile
             echo 'RUN npm install' >> Dockerfile
             echo 'COPY . .' >> Dockerfile
-            echo 'EXPOSE 5006' >> Dockerfile
+            echo 'EXPOSE 7006' >> Dockerfile
             echo 'CMD ["node", "server.js"]' >> Dockerfile
-
             # Build and run the container
-            docker build -t devbillreport .
-            docker run -d --name devbillreport -p 5006:5006 devbillreport
-
+            docker build -t dev-nexhub-report .
+            docker run -d --name dev-nexhub-report -p 8006:7006 dev-nexhub-report
             # Cleanup Dockerfile
             rm Dockerfile
           EOF_SSH
