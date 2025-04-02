@@ -30,4 +30,5 @@ function nexVerifyToken(req, res, next) {
     }
 }
 
+
 module.exports = { nexVerifyToken };
