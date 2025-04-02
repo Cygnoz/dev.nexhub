@@ -1,4 +1,4 @@
-name: Deploy to Ubuntu Server - Suppliers
+name: Deploy to Ubuntu Server - Purchase nexhub
 
 on:
   push:
@@ -19,32 +19,27 @@ jobs:
           echo "${{ secrets.SERVER_SSH_KEY }}" > ~/.ssh/id_rsa
           chmod 600 ~/.ssh/id_rsa
           ssh-keyscan -H ${{ secrets.SERVER_IP }} >> ~/.ssh/known_hosts
-
       - name: Deploy to Server
         run: |
           ssh ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_IP }} << 'EOF_SSH'
-            cd ~/BillBizz
-            git checkout Suppliers
+            cd ~/dev.nexhub
+            git checkout Suppilers
             git pull
-
             # Remove old container if it exists
-            if docker ps -a --format '{{.Names}}' | grep -q "^devbillsuppliers$"; then
-              docker rm -f devbillsuppliers
+            if docker ps -a --format '{{.Names}}' | grep -q "^dev-nexhub-suppilers$"; then
+              docker rm -f dev-nexhub-suppilers
             fi
-
             # Create Dockerfile
             echo 'FROM node:22.11.0' > Dockerfile
             echo 'WORKDIR /usr/src/app' >> Dockerfile
             echo 'COPY package*.json ./' >> Dockerfile
             echo 'RUN npm install' >> Dockerfile
             echo 'COPY . .' >> Dockerfile
-            echo 'EXPOSE 5009' >> Dockerfile
+            echo 'EXPOSE 7009' >> Dockerfile
             echo 'CMD ["node", "server.js"]' >> Dockerfile
-
             # Build and run the container
-            docker build -t devbillsuppliers .
-            docker run -d --name devbillsuppliers -p 5009:5009 devbillsuppliers
-
+            docker build -t dev-nexhub-staff .
+            docker run -d --name dev-nexhub-suppilers -p 8009:7009 dev-nexhub-suppilers
             # Cleanup Dockerfile
             rm Dockerfile
           EOF_SSH
