@@ -69,7 +69,7 @@ server.use((err, req, res, next) => {
 const PORT = process.env.PORT || 7004;
 
 server.get('/', (req, res) => {
-    res.status(200).json("Dev NexHub server started - Organization v9.0");
+    res.status(200).json("Dev NexHub server started - Organization v10");
 });
 
 server.listen(PORT, () => {
