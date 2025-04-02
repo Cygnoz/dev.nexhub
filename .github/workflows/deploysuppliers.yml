@@ -38,7 +38,7 @@ jobs:
             echo 'EXPOSE 7009' >> Dockerfile
             echo 'CMD ["node", "server.js"]' >> Dockerfile
             # Build and run the container
-            docker build -t dev-nexhub-staff .
+            docker build -t dev-nexhub-suppilers .
             docker run -d --name dev-nexhub-suppilers -p 8009:7009 dev-nexhub-suppilers
             # Cleanup Dockerfile
             rm Dockerfile
