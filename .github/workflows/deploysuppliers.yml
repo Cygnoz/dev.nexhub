@@ -23,7 +23,7 @@ jobs:
         run: |
           ssh ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_IP }} << 'EOF_SSH'
             cd ~/dev.nexhub
-            git checkout Suppilers
+            git checkout Suppliers
             git pull
             # Remove old container if it exists
             if docker ps -a --format '{{.Names}}' | grep -q "^dev-nexhub-suppilers$"; then
