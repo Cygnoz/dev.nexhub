@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import logo from "../../../public/nexHubLogo.png";
+import logo from "../../../public/nexHubLogo.png.png";
 // import logoLight from "../../../public/bill-bizz-logo.png";
 import ArrowrightUp from "../../assets/icons/ArrowrightUp";
 import BellDot from "../../assets/icons/BellDot";
