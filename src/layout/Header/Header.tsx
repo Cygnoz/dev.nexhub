@@ -3,7 +3,7 @@ import { Toaster } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import navlist from "../../assets/constants";
 import SettingsIcons from "../../assets/icons/SettingsIcon";
-import viewAppsIcon from "../../assets/Images/Frame 629925.png";
+// import viewAppsIcon from "../../assets/Images/Frame 629925.png";
 import ModuleSearch from "../../Components/ModuleSearch";
 import { PreviousPathContext } from "../../context/ContextShare";
 import { useOrganization } from "../../context/OrganizationContext";
@@ -18,9 +18,9 @@ const Header = ({ }: Props) => {
   const navigate = useNavigate();
   const { setPreviousPath } = useContext(PreviousPathContext)!;
 
-  const handleNavigate = () => {
-    navigate("/landing#appsSection");
-  };
+  // const handleNavigate = () => {
+  //   navigate("/landing#appsSection");
+  // };
 
 
   
