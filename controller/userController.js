@@ -245,6 +245,7 @@ exports.loginOTP = async (req, res) => {
       return res.status(400).json({ success: false, message: 'Please provide both email and password' });
     }
 
+    
     // Find the user
     const user = await User.findOne({ userEmail:email });
 
