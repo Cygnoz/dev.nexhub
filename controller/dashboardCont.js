@@ -204,10 +204,10 @@ exports.getOverviewData = async (req, res) => {
 
         // console.log("Filtered Items:", filteredItems);
 
-        const totalInventoryValue = filteredItems.reduce(
+        const totalInventoryValue = Math.abs(filteredItems.reduce(
             (sum, item) => sum + ((parseFloat(item.currentStock) || 0) * (parseFloat(item.costPrice) || 0)), 
             0
-        );
+        ));
 
         // Total Expenses: Sum of grandTotal from expenses filtered for the selected range
         const filteredExpenses = allExpense.filter(exp =>
