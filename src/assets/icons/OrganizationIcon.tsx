@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useOrganization } from '../../context/OrganizationContext';
 import organizationIcon from '../Images/Ellipse 1.png';
 
@@ -8,14 +8,8 @@ type Props = {
 };
 
 const OrganizationIcon: React.FC<Props> = ({ width = '6', height = '6' }) => {
-  const { organization: orgData, fetchOrganization } = useOrganization();
+  const { organization: orgData } = useOrganization();
   
-  useEffect(() => {
-    // Fetch organization data on initial render if it's not already loaded
-    if (!orgData) {
-      fetchOrganization();
-    }
-  }, [orgData, fetchOrganization]);
 
   return (
     <div>

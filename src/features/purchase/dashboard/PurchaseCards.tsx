@@ -28,7 +28,7 @@ const PurchaseCards = ({data}: Props) => {
     {
       icon: IndianRupeeBadge,
       title: "Total Purchase Orders",
-      count: data?.totalPurchaseOrder,
+      count: data?.totalPurchaseOrder|| 0,
       rating: "8%",
       iconBg:"bg-[#f6e7cf]"
 
@@ -36,7 +36,7 @@ const PurchaseCards = ({data}: Props) => {
     {
       icon: BoxIcon,
       title: "Total Items Purchased  ",
-      count: data?.totalItemPurchased,
+      count: data?.totalItemPurchased|| 0,
       item: "| Asus Laptops",
       rating: "12,95%",
       iconBg:"bg-[#eadadb]"
@@ -45,7 +45,7 @@ const PurchaseCards = ({data}: Props) => {
     {
       icon: DollerSign,
       title: "Total No: of Payment Made",
-      count: data?.totalPaymentMade,
+      count: data?.totalPaymentMade|| 0,
       rating: "18,95%",
       iconBg:"bg-[#eaeceb]"
 
@@ -53,7 +53,7 @@ const PurchaseCards = ({data}: Props) => {
     {
       icon: DollerSign,
       title: "Total Shipments",
-      count: data?.totalShipments,
+      count: data?.totalShipments|| 0,
       item: "| Supplier A",
       rating: "10%",
       iconBg:"bg-[#eaeceb]"

@@ -19,7 +19,7 @@ type Props = {};
 
 function PaymentView({ }: Props) {
   const [paymentData, setPaymentData] = useState<[] | any>([])
-  const { request: getPayment } = useApi("get", 5005)
+  const { request: getPayment } = useApi("get", 7005)
   const { organization } = useOrganization()
   const { request: deleteData } = useApi("delete", 7005);
   const [isConfirmModalOpen, setConfirmModalOpen] = useState(false);

@@ -1,5 +1,5 @@
 import bilbizz from "../../assets/icons/BillBizzIcon.tsx.svg";
-import salonex from "../../assets/icons/SewnexIconn.svg";
+import salonex from "../../assets/icons/SalonexIconn.svg";
 import sewnex from "../../assets/icons/SewnexIconn.svg";
 import sixnexd from "../../assets/icons/SixNexDIcon.svg";
 

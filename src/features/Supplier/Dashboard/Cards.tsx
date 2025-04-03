@@ -14,25 +14,25 @@ const Cards = ({data}: Props) => {
     {
       icon: <TopCustomerIcon/>,
       title: "Total Active Suppliers  ",
-      count: data?.activeSupplier,
+      count: data?.activeSupplier || 0,
       rating: "12,95",
     },
     {
       icon: <NewCustomerIcon/>,
       title: "Total Spend on Suppliers",
-      count: data?.totalSpendOnSupplier,
+      count: data?.totalSpendOnSupplier || 0,
       rating: "18,95",
     },
     {
         icon: <ActiveCustomerIcon/>,
         title: "Pending Supplier Payments",
-        count:data?.pendingSupplierPayments,
+        count:data?.pendingSupplierPayments || 0,
         rating: "12,95",
     },
     {
         icon:<CustomerRentationIcon/> ,
         title: "Total Shipments This Month  ",
-        count: data?.totalShipments,
+        count: data?.totalShipments || 0,
         rating: "18",
     }
   ];

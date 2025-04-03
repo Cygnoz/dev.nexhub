@@ -330,7 +330,7 @@ const AddItem = ({ }: Props) => {
       taxExemptReason: initialItemData.taxPreference === "Non-taxable" && !initialItemData.taxExemptReason,
       purchaseAccountId: Boolean(initialItemData.costPrice) && initialItemData.purchaseAccountId === "",
       salesAccountId: Boolean(initialItemData.sellingPrice) && initialItemData.salesAccountId === "",
-      costPrice: !initialItemData.costPrice,
+      costPrice: !isService &&!initialItemData.costPrice,
       sellingPrice: !initialItemData.sellingPrice,
       products: isService && !initialItemData.products,
       duration:isService && !initialItemData.duration,
@@ -1433,8 +1433,8 @@ const AddItem = ({ }: Props) => {
 )}
 
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-x-4 gap-y-6">
-          <div >
+        <div className={`grid grid-cols-1 ${!isService?'md:grid-cols-2':'md:grid-cols-1'}  gap-x-4 gap-y-6`}>
+         {!isService&&<div >
             <p className="text-textColor text-base font-semibold mt-2">
               Purchase Information
             </p>
@@ -1605,7 +1605,7 @@ const AddItem = ({ }: Props) => {
 
 
             </div>
-          </div>
+          </div>}
 
 
 
@@ -1726,7 +1726,7 @@ const AddItem = ({ }: Props) => {
 
         </div>
 
-        <div className="w-full mt-2">
+        {!isService&&<div className="w-full mt-2">
           <div className="flex items-center gap-1 text-textColor">
             <label
               htmlFor="checkboxTrack"
@@ -1790,7 +1790,7 @@ const AddItem = ({ }: Props) => {
               />
             </div>
           </div>
-        </div>
+        </div>}
       </div>
       <div className="justify-end me-5 flex gap-4 p-2">
         <Link to="/inventory/Item">

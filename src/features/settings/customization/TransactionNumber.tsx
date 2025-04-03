@@ -39,7 +39,7 @@ function TransactionNumber() {
   const { request: AddPrefix } = useApi("post", 7004);
   const { request: EditPrefix } = useApi("put", 7004);
   const { request: StatusPrefix } = useApi("put", 7004);
-  const { request: DeletePrefix } = useApi('delete', 5004)
+  const { request: DeletePrefix } = useApi('delete', 7004)
   const modules = [
     "journal",
     "creditNote",

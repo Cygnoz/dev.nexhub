@@ -15,7 +15,7 @@ function AccountsDashboard({ }: Props) {
   const [month, setMonth] = useState(String(currentDate.getMonth() + 1).padStart(2, "0")); // Current month (zero-based index)
   const [year, setYear] = useState(currentDate.getFullYear()); // Current year
   const [cardData, setCardData] = useState<any>()
-  const { request: getOverView } = useApi('get', 5001)
+  const { request: getOverView } = useApi('get', 7001)
   const getAccountsOverView = async () => {
     try {
       const { response, error } = await getOverView(`${endponits.ACCOUNT_DASH_OVERVIEW}?date=${year}/${month}`)

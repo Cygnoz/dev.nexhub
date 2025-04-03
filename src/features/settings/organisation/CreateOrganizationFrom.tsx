@@ -266,7 +266,6 @@ const CreateOrganizationForm = () => {
       if (!error && response) {
         toast.success(response.data.message);
         getOrganization()
-
       } else {
         toast.error(error.response.data.message);
       }

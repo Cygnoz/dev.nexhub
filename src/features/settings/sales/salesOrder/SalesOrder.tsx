@@ -9,7 +9,7 @@ import { settingsdataResponseContext } from "../../../../context/ContextShare";
 type Props = {};
 
 function SalesOrder({}: Props) {
-  const { request: AddSalesOrderSettings } = useApi("put",5007);
+  const { request: AddSalesOrderSettings } = useApi("put",7007);
   // Define the state with default values
   const {settingsResponse, getSettingsData } = useContext(settingsdataResponseContext)!;
   const [salesOrderState, setSalesOrderState] = useState({

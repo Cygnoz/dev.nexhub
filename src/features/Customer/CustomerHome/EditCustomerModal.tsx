@@ -2419,11 +2419,12 @@ const EditCustomerModal = ({ customerDataPorps, addressEdit, page }: Props) => {
           </div>
 
           <div className="flex justify-end gap-2 mb-3 m-5">
-            <Button variant="primary" size="sm" onClick={handleEdit}>
-              Save
-            </Button>
+            
             <Button onClick={closeModal} variant="secondary" size="sm">
               Cancel
+            </Button>
+            <Button variant="primary" size="sm" onClick={handleEdit}>
+              Save
             </Button>
           </div>
         </>

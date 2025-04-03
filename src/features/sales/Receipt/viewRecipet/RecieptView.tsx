@@ -20,7 +20,7 @@ type Props = {};
 function RecieptView({ }: Props) {
   const [RecieptData, setRecieptData] = useState<[] | any>([])
   const [invoiceJournal, setInvoiceJournal] = useState<any>([])
-  const { request: getReciept } = useApi("get", 5007)
+  const { request: getReciept } = useApi("get", 7007)
   const { request: deleteSales } = useApi("delete", 7007);
   const { organization } = useOrganization()
 

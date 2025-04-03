@@ -38,7 +38,7 @@ const App: React.FC = () => {
         <Navigate to="/login" replace />
       ),
       children: [
-        { path: "dashboard", element: <Dashboard /> },
+        { path: "/", element: <Dashboard /> },
         ...AccountantRoutes,
         ...CustomerRoutes,
         ...InventoryRoutes,

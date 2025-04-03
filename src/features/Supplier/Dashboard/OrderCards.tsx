@@ -23,7 +23,7 @@ const cardVariants = cva("rounded-xl px-4", {
 const OrderCards: React.FC<CardProps> = ({ icon, title, count }) => {
   return (
     <div className={`${cardVariants({ active: false })} py-4 px-2 w-full mx-2 my-2`}>
-      <div className="flex gap-4 justify-between items-center">
+      <div className="flex gap-3 items-center">
         <div className="">
           {icon}
         </div>

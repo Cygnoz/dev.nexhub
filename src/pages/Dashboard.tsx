@@ -10,6 +10,7 @@ import TopSellingProducts from "../features/dashboard/TopSellingProducts"
 import useApi from "../Hooks/useApi"
 import { endponits } from "../Services/apiEndpoints"
 import MonthYearDropdown from "../Components/dropdown/MonthYearDropdown"
+import { useLocation } from "react-router-dom"
 
 type Props = {}
 
@@ -19,9 +20,10 @@ function Dashboard({ }: Props) {
   const [month, setMonth] = useState(String(currentDate.getMonth() + 1).padStart(2, "0")); // Current month (zero-based index)
   const [year, setYear] = useState(currentDate.getFullYear()); // Current year
   const [cardData, setCardData] = useState<any>()
-  const { request: getOverView } = useApi('get', 5004)
+  const { request: getOverView } = useApi('get', 7004)
   const { request: getTopCustomers } = useApi("get", 7004);
   const [customerData, setCustomerData] = useState<any>();
+  const location=useLocation()
   const getMainOverView = async () => {
     try {
       const { response, error } = await getOverView(`${endponits.MAIN_DASH_OVERVIEW}?date=${year}/${month}`)
@@ -63,7 +65,12 @@ function Dashboard({ }: Props) {
       console.log("er", error);
     }
   };
-
+  useEffect(()=>{
+    if(location.pathname=="/"){
+      localStorage.setItem('savedIndex','0')
+      localStorage.setItem('savedSelectedIndex','0')
+    }
+  },[location])
 
   return (
     <div className="mx-4 sm:mx-6 my-4 min-h-screen">

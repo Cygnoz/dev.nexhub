@@ -42,7 +42,7 @@ function Login({ }: Props) {
         setIsAuthenticated(true); // Set authentication state
         // Redirect to the home/dashboard
         setTimeout(() => {
-          navigate('/landing');
+          navigate('/');
         }, 2000);
         // navigate("/otp", { state: { email } }); // Pass email via navigate state
       }

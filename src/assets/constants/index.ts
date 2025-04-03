@@ -15,7 +15,7 @@ const navlist = [
   {
     nav: "Home",
     icon: VectorDashboard,
-    route: "/dashboard",
+    route: "/",
     subhead: [
       {
         headName: "Dashboard",

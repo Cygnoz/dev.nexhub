@@ -13,32 +13,32 @@ const Cards = ({data}: Props) => {
     {
       icon: <TopCustomerIcon/>,
       title: "Total Sales Revenue",
-      count: data?.totalRevenue,
+      count: data?.totalRevenue || 0,
       rating: "12,95",
     },
     {
       icon: <NewCustomerIcon/>,
       title: "Sales Orders",
-      count: data?.totalSalesOrderCount,
+      count: data?.totalSalesOrderCount || 0,
       rating: "18,95",
     },
     {
         icon: <ActiveCustomerIcon/>,
         title: "Quotes",
         count: data?.
-        totalSalesQuoteCount,
+        totalSalesQuoteCount || 0,
         rating: "12,95",
     },
     {
       icon:<CustomerRentationIcon/> ,
       title: "Invoices",
-      count:data?.totalInvoiceCount,
+      count:data?.totalInvoiceCount || 0,
       rating: "18",
   },
     {
         icon:<CustomerRentationIcon/> ,
         title: "Credit Notes",
-        count:data?.totalCreditNoteCount,
+        count:data?.totalCreditNoteCount || 0,
         rating: "18",
     },
   ];

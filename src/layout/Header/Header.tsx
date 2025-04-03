@@ -1,16 +1,17 @@
-import { useContext, useEffect, useState } from "react";
-import toast, { Toaster } from "react-hot-toast";
+import { useContext, useEffect } from "react";
+import { Toaster } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import navlist from "../../assets/constants";
 import SettingsIcons from "../../assets/icons/SettingsIcon";
 import viewAppsIcon from "../../assets/Images/Frame 629925.png";
+import ModuleSearch from "../../Components/ModuleSearch";
 import { PreviousPathContext } from "../../context/ContextShare";
+import { useOrganization } from "../../context/OrganizationContext";
 import useApi from "../../Hooks/useApi";
 import { endponits } from "../../Services/apiEndpoints";
 import Notification from "./HeaderIcons/Notification";
 import Organization from "./HeaderIcons/Organization";
 import RefferEarn from "./HeaderIcons/RefferEarn";
-import ModuleSearch from "../../Components/ModuleSearch";
 type Props = {};
 
 const Header = ({ }: Props) => {
@@ -22,33 +23,26 @@ const Header = ({ }: Props) => {
   };
 
 
-  const [organizationData, setOrganizationData] = useState<any>(null);
+  
+
+
   const { request: getOneOrganization } = useApi("get", 7004);
 
-  const handleLogout = () => {
-    ['authToken', 'savedIndex', 'savedSelectedIndex'].forEach(item => localStorage.removeItem(item));
-    navigate("/login");
-    toast.error("Session expired. Please log in again.");
-  };
+  const {organization,setOrganization}=useOrganization()
 
-  useEffect(() => {
-    const fetchOrganization = async () => {
-      try {
-        const url = `${endponits.GET_ONE_ORGANIZATION}`;
-        const apiResponse = await getOneOrganization(url);
-        if (!apiResponse.response?.data) {
-          handleLogout();
-        } else {
-          setOrganizationData(apiResponse.response.data);
-        }
-      } catch (error: any) {
-        const errorMessage = error.response?.data?.message || "Error fetching organization data";
-        toast.error(errorMessage);
-      }
-    };
-
-    fetchOrganization();
-  }, []);
+   const fetchOrganization = async () => {
+       
+               try {
+                 const url = `${endponits.GET_ONE_ORGANIZATION}`;
+                 const { response, error } = await getOneOrganization(url);
+                 if (!error && response) {
+                   setOrganization(response.data);
+                 }
+               } catch (error) {
+                 console.log("Error in fetching Organization", error);
+               }
+             
+       };
 
   const handleGoToSettings = () => {
     navigate("/settings");
@@ -69,6 +63,9 @@ const Header = ({ }: Props) => {
     }
   };
 
+  useEffect(()=>{
+    fetchOrganization()
+  },[])
 
 
   return (
@@ -84,7 +81,7 @@ const Header = ({ }: Props) => {
       </div>
 
       {/* View Apps */}
-      <div
+      {/* <div
         className="flex ms-14 justify-center items-center gap-2 cursor-pointer"
         onClick={handleNavigate}
       >
@@ -92,7 +89,7 @@ const Header = ({ }: Props) => {
         <span className="text-xs font-semibold text-dropdownText whitespace-nowrap">
           View Apps
         </span>
-      </div>
+      </div> */}
 
       {/* Icons & Settings */}
       <div className="flex items-center gap-2 ml-auto">
@@ -106,7 +103,7 @@ const Header = ({ }: Props) => {
           <SettingsIcons color="#4B5C79" size="md" />
         </p>
         <div className="tooltip" data-tooltip="Organization">
-          <Organization organizationData={organizationData} />
+          <Organization organizationData={organization} />
         </div>
       </div>
     </div>

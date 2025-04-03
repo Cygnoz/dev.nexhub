@@ -1,5 +1,5 @@
-import { Link, useNavigate } from "react-router-dom";
-import logo from "../../../public/nexHubLogo.png";
+import { Link } from "react-router-dom";
+import logo from "../../../public/nexHubLogo.png.png";
 import navlist from "../../assets/constants";
 import { useEffect, useState } from "react";
 import ThreelineIcon from "../../assets/icons/ThreelineIcon";
@@ -27,7 +27,6 @@ const SideBar = ({ activeIndex, setActiveIndex }: Props) => {
     setIsSidebarOpen(false); // Close sidebar when an item is clicked (for mobile)
   };
 
-  const navigate = useNavigate();
 
   return (
     <>
@@ -46,8 +45,8 @@ const SideBar = ({ activeIndex, setActiveIndex }: Props) => {
           } transition-transform duration-300 ease-in-out sm:relative sm:translate-x-0`}
       >
         <nav>
-          <div onClick={() => navigate("/landing")} className="flex justify-between items-center ms-5 pt-16 sm:pt-7 pb-5 cursor-pointer">
-            <img src={logo} alt="logo" className="w-8 h-8" />
+          <div  className="flex justify-center items-center my-3   cursor-pointer">
+            <img src={logo} alt="logo" className="w-14 h-14" />
           </div>
         </nav>
         <ul className="flex-col">

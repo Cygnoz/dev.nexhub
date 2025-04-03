@@ -23,7 +23,7 @@ type Props = {
 
 const RackModal = forwardRef<HTMLDivElement, Props>(({ onClose }, ref) => {
   const { request: fetchAllRacks } = useApi("put", 7003);
-  const { request: deleteRackRequest } = useApi("pdelete", 5003);
+  const { request: deleteRackRequest } = useApi("delete", 7003);
   const { request: updateRackRequest } = useApi("put", 7003);
   const { request: addRackRequest } = useApi("post", 7003);
   const [rackData, setRackData] = useState<Rack>({

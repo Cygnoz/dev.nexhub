@@ -16,12 +16,12 @@ const Cards = ({data}:CardProps) => {
     {
       icon: UserRounded,
       title: "Total Expenses",
-      count: data?.totalExpense,
+      count: data?.totalExpense || 0,
     },
     {
       icon: DollerSign,
       title: "Expense Reports Submitted",
-      count: data?.expenseReportsSubmitted,
+      count: data?.expenseReportsSubmitted|| 0,
     },
   ];
 

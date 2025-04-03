@@ -25,8 +25,7 @@ const EditUnitConversion = ({}: Props) => {
   unitConversionR:"",
 });
 
-// const {request:addEditunit}=useApi("post",5003);
-console.log(editUnitData);
+
 
 
 const handleInputChange = (

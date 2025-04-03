@@ -58,7 +58,7 @@ const CustomBar: React.FC<CustomBarProps> = ({ x = 0, y = 0, width = 0, height =
 };
 
 function TopSalesByCustomer({ date }: Props) {
-  const { request: getTopCustomers } = useApi('get', 5002);
+  const { request: getTopCustomers } = useApi('get', 7002);
   const [topCustomerData, setTopCustomerData] = useState<DataItem[]>([]);
 
   const getTopCus = async () => {

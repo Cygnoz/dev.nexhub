@@ -23,10 +23,10 @@ type CategoryData = {
 
 function AddExpenseCategory({}: Props) {
 
-   const {request:addCategory}=useApi('post',5008)
-   const {request:updateCategory}=useApi('put',5008)
-   const {request:deleteCategory}=useApi('delete',5008)
-   const {request:getAllCategory}=useApi('get',5008)
+   const {request:addCategory}=useApi('post',7008)
+   const {request:updateCategory}=useApi('put',7008)
+   const {request:deleteCategory}=useApi('delete',7008)
+   const {request:getAllCategory}=useApi('get',7008)
    const [allCategory,setAllCategory]=useState([])
     const [categories, setCategories] = useState<CategoryData>({
         expenseCategory: "",
